@@ -42,9 +42,8 @@ public class LoginFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new LoginFrame().connectToDatabase();
-					LoginFrame window = new LoginFrame();
-					window.frame.setVisible(true);
+					new StartFrame();
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,11 +54,7 @@ public class LoginFrame {
 	/**
 	 * Create the application.
 	 */
-	public LoginFrame() {
-		MysqlDataSource dataSource = new MysqlDataSource();
-		dataSource.setUser("root");
-		dataSource.setPassword("");
-		dataSource.setServerName("localhost");
+	public LoginFrame(MysqlDataSource dataSource) {
 
 		try {
 			conn = dataSource.getConnection();
@@ -362,6 +357,7 @@ public class LoginFrame {
 		loginBtn.setBounds(354, 510, 207, 81);
 		frame.getContentPane().add(loginBtn);
 
+		frame.setVisible(true);
 	}
 
 	private void connectToDatabase() {
